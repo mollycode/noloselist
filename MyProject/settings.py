@@ -1,10 +1,14 @@
 # Django settings for MyProject project.
+import os.path
 
-DEBUG = True
+PWD = os.path.dirname(os.path.realpath(__file__))
+
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
+    ("Molly Nacey", 'mnacey@princeton.edu'),
 )
 
 MANAGERS = ADMINS
@@ -12,7 +16,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'C:/Users/Molly/djprogs/MyProject/store.db',                      # Or path to database file if using sqlite3.
+        'NAME': os.path.abspath(os.path.join(PWD, '..', 'store.db')),                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -67,7 +71,6 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "C:/Users/Molly/djprogs/MyProject/static",
 )
 
 # List of finder classes that know how to find static files in
@@ -107,8 +110,8 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "C:/Users/Molly/djprogs/MyProject/templates",
-)
+    os.path.abspath(os.path.join(PWD, '..', 'templates')),
+    )
 
 INSTALLED_APPS = (
     #'django.contrib.auth',
